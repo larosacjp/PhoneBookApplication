@@ -1,0 +1,19 @@
+extend type Query{
+    listContacts: [Contact!]! @all @guard
+
+    viewContact(id: ID! @eq): Contact @find @guard
+}
+
+extend type Mutation{
+    createContact(name: String!, contact_no: String!): Contact! @create @guard
+    updateContact(id:ID!, name: String, contact_no: String): Contact! @update @guard
+    deleteContact(id:ID! @whereKey): Contact @delete @guard
+}
+
+type Contact {
+    id: ID!,
+    name: String!,
+    contact_no: String!,
+    created_at: DateTime!,
+    updated_at: DateTime!
+}
