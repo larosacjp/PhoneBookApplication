@@ -1,13 +1,13 @@
-extend type Query{
-    listContacts: [Contact!]! @all @guard
+extend type Query @guard{
+    listContacts: [Contact!]! @all
 
-    viewContact(id: ID! @eq): Contact @find @guard
+    viewContact(id: ID! @eq): Contact @find
 }
 
-extend type Mutation{
-    createContact(name: String!, contact_no: String!): Contact! @create @guard
-    updateContact(id:ID!, name: String, contact_no: String): Contact! @update @guard
-    deleteContact(id:ID! @whereKey): Contact @delete @guard
+extend type Mutation @guard{
+    createContact(name: String!, contact_no: String!): Contact! @create
+    updateContact(id:ID!, name: String, contact_no: String): Contact! @update
+    deleteContact(id:ID! @whereKey): Contact @delete
 }
 
 type Contact {
